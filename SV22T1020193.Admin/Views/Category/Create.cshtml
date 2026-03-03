@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Thêm loại hàng";
+}
+
+<section class="content-header mb-3">
+    <h3 class="fw-bold">
+        <i class="fa-solid fa-circle-plus me-2"></i> Thêm loại hàng
+    </h3>
+</section>
+
+<div class="container-fluid">
+    <div class="card p-4">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Tên loại</label>
+                <input class="form-control" placeholder="Ví dụ: Laptop">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Mô tả</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="text-end">
+                <a href="/Category" class="btn btn-light">Quay lại</a>
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-save"></i> Lưu
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

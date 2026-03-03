@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Chi tiết đơn hàng #@ViewBag.OrderId</h3>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Áo sơ mi</td>
+                    <td>2</td>
+                    <td>500.000</td>
+                    <td>1.000.000</td>
+                    <td>
+                        <a asp-action="EditCartItem" asp-route-id="@ViewBag.OrderId" asp-route-productId="1" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="DeleteCartItem" asp-route-id="@ViewBag.OrderId" asp-route-productId="1" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+
+        <a asp-action="Accept" asp-route-id="@ViewBag.OrderId" class="btn btn-success">Duyệt</a>
+        <a asp-action="Shipping" asp-route-id="@ViewBag.OrderId" class="btn btn-info">Giao hàng</a>
+        <a asp-action="Finish" asp-route-id="@ViewBag.OrderId" class="btn btn-primary">Hoàn tất</a>
+        <a asp-action="Reject" asp-route-id="@ViewBag.OrderId" class="btn btn-danger">Từ chối</a>
+        <a asp-action="Cancel" asp-route-id="@ViewBag.OrderId" class="btn btn-secondary">Hủy</a>
+
+    </div>
+</div>

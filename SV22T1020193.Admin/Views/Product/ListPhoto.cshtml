@@ -1,0 +1,34 @@
+﻿<section class="content-header mb-3">
+    <h3 class="fw-bold">
+        <i class="fa-solid fa-image me-2"></i> Hình ảnh sản phẩm
+    </h3>
+</section>
+
+<div class="container-fluid">
+    <div class="card p-3">
+        <div class="text-end mb-3">
+            <a href="/Product/CreatePhoto/1" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Thêm ảnh
+            </a>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card p-2">
+                    <img src="https://via.placeholder.com/300" class="img-fluid rounded">
+                    <div class="text-center mt-2">
+                        <a href="/Product/EditPhoto/1?photoId=3"
+                           class="btn btn-sm btn-outline-warning">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <a href="/Product/DeletePhoto/1?photoId=3"
+                           class="btn btn-sm btn-outline-danger"
+                           onclick="return confirm('Xóa ảnh?')">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

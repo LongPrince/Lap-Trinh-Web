@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Danh sách Shipper";
+}
+
+<section class="content-header mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3 class="fw-bold">
+            <i class="fa-solid fa-truck-fast me-2"></i> Shipper
+        </h3>
+        <a href="/Shipper/Create" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Thêm shipper
+        </a>
+    </div>
+</section>
+
+<div class="card">
+    <div class="card-header bg-white">
+        <form method="get" class="row g-2">
+            <div class="col-md-4">
+                <input type="text" name="keyword" class="form-control"
+                       placeholder="Tìm theo tên, điện thoại...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-secondary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tìm
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Tên shipper</th>
+                    <th>Điện thoại</th>
+                    <th>Khu vực</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center" width="180">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Trần Văn B</strong><br />
+                        <small class="text-muted">ID: SHP001</small>
+                    </td>
+                    <td>0909 123 456</td>
+                    <td>Quận 1</td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success border">
+                            ● Đang hoạt động
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <a href="/Shipper/Edit/1"
+                           class="btn btn-sm btn-outline-warning"
+                           title="Chỉnh sửa">
+                            <i class="fa fa-pen"></i>
+                        </a>
+                        <a href="/Shipper/Delete/1"
+                           onclick="return confirm('Xóa shipper này?')"
+                           class="btn btn-sm btn-outline-danger"
+                           title="Xóa">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer bg-white text-center">
+        <ul class="pagination pagination-sm justify-content-center mb-0">
+            <li class="page-item active"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+        </ul>
+    </div>
+</div>

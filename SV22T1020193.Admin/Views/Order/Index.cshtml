@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sách đơn hàng</h3>
+        <div class="card-tools">
+            <a asp-action="Create" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Lập đơn hàng
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <!-- Form tìm kiếm -->
+        <form asp-action="Search" method="get" class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" name="keyword" class="form-control" placeholder="Tìm theo mã, khách hàng...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info">
+                    <i class="fas fa-search"></i> Tìm kiếm
+                </button>
+            </div>
+        </form>
+
+        <!-- Bảng danh sách -->
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày lập</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th width="220">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1001</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>03/03/2026</td>
+                    <td>2.500.000 đ</td>
+                    <td><span class="badge bg-warning">Chờ duyệt</span></td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="1" class="btn btn-sm btn-info">Chi tiết</a>
+                        <a asp-action="Accept" asp-route-id="1" class="btn btn-sm btn-success">Duyệt</a>
+                        <a asp-action="Cancel" asp-route-id="1" class="btn btn-sm btn-danger">Hủy</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
