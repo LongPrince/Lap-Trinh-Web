@@ -1,21 +1,17 @@
 ﻿<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-    <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
         <a href="#" class="brand-link">
             <img src="~/lib/adminlte/assets/img/AdminLTELogo.png" alt="Logo" class="brand-image opacity-75 shadow" />
-            <span class="brand-text fw-light">LiteShop</span>
+            <span class="brand-text fw-light">TNP Shop</span>
         </a>
-    </div>
-    <!--end::Sidebar Brand-->
-    <!--begin::Sidebar Wrapper-->
+    </div>    
     <div class="sidebar-wrapper">
-        <nav class="mt-2">
-            <!--begin::Sidebar Menu-->
+        <nav class="mt-2">            
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation"
                 aria-label="Main navigation" data-accordion="false" id="navigation">
 
                 <li class="nav-item">
-                    <a href="~/Home" class="nav-link">
+                    <a href="~/" class="nav-link">
                         <i class="nav-icon bi bi-speedometer2"></i>
                         <p>Trang chủ</p>
                     </a>
@@ -31,17 +27,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-controller="Supplier"
-                            aaf
-
-                               asp-action="Index"
-                               class="nav-link">
+                            <a href="~/Supplier" class="nav-link">
                                 <i class="nav-icon bi bi-truck"></i>
                                 <p>Nhà cung cấp</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="~/Customer" class="nav-link">
                                 <i class="nav-icon bi bi-people"></i>
                                 <p>Khách hàng</p>
                             </a>
@@ -95,23 +87,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/Order/Create" class="nav-link">
+                            <a href="~/Order/Create" class="nav-link">
                                 <i class="nav-icon bi bi-cart-plus"></i>
                                 <p>Lập đơn hàng</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Order/Index" class="nav-link">
+                            <a href="~/Order" class="nav-link">
                                 <i class="nav-icon bi bi-receipt"></i>
                                 <p>Quản lý đơn hàng</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-
-            </ul>
-            <!--end::Sidebar Menu-->
+            </ul>            
         </nav>
-    </div>
-    <!--end::Sidebar Wrapper-->
+    </div>    
 </aside>

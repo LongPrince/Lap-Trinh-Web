@@ -1,58 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Quản lý đơn hàng";
+    ViewBag.Title = "Quản lý Đơn hàng";
 }
-
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Danh sách đơn hàng</h3>
-        <div class="card-tools">
-            <a asp-action="Create" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus"></i> Lập đơn hàng
-            </a>
-        </div>
-    </div>
-
+@section PageToolBar {
+    <a href="~/Order/Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-1"></i>
+        Lập đơn hàng mới
+    </a>
+}
+<div class="card mb-3">
     <div class="card-body">
+        <form id="formSearch"
+              method="get"
+              action="~/Order/Search"
+              data-target="searchResult"
+              onsubmit="paginationSearch(event, this, 1)">
 
-        <!-- Form tìm kiếm -->
-        <form asp-action="Search" method="get" class="row mb-3">
-            <div class="col-md-4">
-                <input type="text" name="keyword" class="form-control" placeholder="Tìm theo mã, khách hàng...">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info">
-                    <i class="fas fa-search"></i> Tìm kiếm
-                </button>
+            <div class="row g-2">
+                <div class="col-md-3">
+                    <label class="form-label">Trạng thái đơn hàng</label>
+                    <select name="Status" class="form-select">
+                        <option value="">-- Tất cả --</option>
+                        <option>Đang chờ duyệt</option>
+                        <option>Đã duyệt</option>
+                        <option>Đang giao</option>
+                        <option>Hoàn tất</option>
+                        <option>Bị hủy</option>
+                        <option>Bị từ chối</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Thời gian lập đơn hàng</label>
+                    <div class="input-group">
+                        <input type="text" name="dateFrom" class="form-control date-picker" placeholder="Từ ngày..." />
+                        <span class="input-group-text">-</span>
+                        <input type="text" name="dateTo" class="form-control date-picker" placeholder="...đến ngày" />
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <label class="form-label">Tên khách hàng</label>
+                    <div class="input-group">
+                        <input type="text"
+                               name="searchValue"
+                               class="form-control"
+                               placeholder="Tên khách hàng..." autofocus />
+
+                        <button class="btn btn-info d-flex align-items-center">
+                            <i class="bi bi-search me-1"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </form>
-
-        <!-- Bảng danh sách -->
-        <table class="table table-bordered table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Mã đơn</th>
-                    <th>Khách hàng</th>
-                    <th>Ngày lập</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th width="220">Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>#1001</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>03/03/2026</td>
-                    <td>2.500.000 đ</td>
-                    <td><span class="badge bg-warning">Chờ duyệt</span></td>
-                    <td>
-                        <a asp-action="Detail" asp-route-id="1" class="btn btn-sm btn-info">Chi tiết</a>
-                        <a asp-action="Accept" asp-route-id="1" class="btn btn-sm btn-success">Duyệt</a>
-                        <a asp-action="Cancel" asp-route-id="1" class="btn btn-sm btn-danger">Hủy</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
     </div>
 </div>
+
+<div id="searchResult">   
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            paginationSearch(null, document.getElementById("formSearch"), 1);
+        });
+    </script>
+}

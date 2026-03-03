@@ -1,188 +1,129 @@
 ﻿@{
-    ViewData["Title"] = "Danh sách sản phẩm";
+    ViewBag.Title = "Quản lý Mặt hàng";
+}
+@section PageToolBar {
+    <a href="~/Product/Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-1"></i>
+        Bổ sung
+    </a>
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<div class="card mb-3">
+    <div class="card-body">
+        <form id="formSearch">
+            <div class="row g-2">
+                <div class="col-md-3">
+                    <label class="form-label">Loại hàng</label>
+                    <select class="form-select">
+                        <option value="">-- Tất cả --</option>
+                        <option>Đồ uống</option>
+                        <option>Thực phẩm</option>
+                        <option>Gia dụng</option>
+                    </select>
+                </div>
 
-<style>
-    /* Đồng bộ CSS từ trang Nhân viên */
-    :root {
-        --primary-color: #4e73df;
-        --secondary-color: #858796;
-    }
+                <div class="col-md-2">
+                    <label class="form-label">Nhà cung cấp</label>
+                    <select class="form-select">
+                        <option value="">-- Tất cả --</option>
+                        <option>Công ty ABC</option>
+                        <option>Công ty XYZ</option>
+                    </select>
+                </div>
 
-    .card {
-        border-radius: 12px;
-        border: none;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .table thead {
-        background-color: #f8f9fa;
-    }
-
-    .table th {
-        border-top: none;
-        text-transform: uppercase;
-        font-size: 12px;
-        color: #6c757d;
-        letter-spacing: 0.5px;
-    }
-
-    /* Đồng bộ nút thao tác */
-    .btn-action {
-        width: 32px;
-        height: 32px;
-        padding: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        margin: 0 2px;
-        transition: 0.3s;
-    }
-
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-    /* Style cho ảnh sản phẩm nhỏ */
-    .product-img {
-        width: 45px;
-        height: 45px;
-        border-radius: 8px;
-        object-fit: cover;
-        background: #eaecf4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--secondary-color);
-        font-size: 20px;
-    }
-
-    .search-group .form-control, .search-group .form-select {
-        border-radius: 8px;
-        background-color: #f8f9fc;
-        border: 1px solid #e3e6f0;
-    }
-</style>
-
-<section class="content-header mb-4">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-sm-6">
-                <h3 class="fw-bold m-0"><i class="fa-solid fa-box-open me-2 text-primary"></i>Quản lý sản phẩm</h3>
-            </div>
-            <div class="col-sm-6 text-end">
-                <a href="/Product/Create" class="btn btn-primary shadow-sm px-3">
-                    <i class="fa-solid fa-plus-circle me-1"></i> Thêm sản phẩm mới
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="container-fluid">
-    <div class="card">
-        <div class="card-header bg-white py-3">
-            <form method="get" class="row g-3 search-group">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-md-3">
+                    <label class="form-label">Khoảng giá</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
-                        <input type="text" name="keyword" class="form-control border-start-0" placeholder="Tên sản phẩm, mã SKU...">
+                        <input type="text"
+                               name="minPrice" 
+                               class="form-control money-input"
+                               placeholder="Từ" />
+                        <span class="input-group-text">-</span>
+                        <input type="text"
+                               name="maxPrice"
+                               class="form-control money-input"
+                               placeholder="Đến" />
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3">
-                    <select name="category" class="form-select">
-                        <option value="">-- Loại hàng --</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 col-md-3">
-                    <select name="supplier" class="form-select">
-                        <option value="">-- Nhà cung cấp --</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <input type="number" name="minPrice" class="form-control" placeholder="Giá từ">
-                </div>
-                <div class="col-lg-2 col-md-4 col-6">
-                    <input type="number" name="maxPrice" class="form-control" placeholder="Đến">
-                </div>
-                <div class="col-lg-1 col-md-4">
-                    <button type="submit" class="btn btn-secondary w-100 shadow-sm">
-                        <i class="fa-solid fa-filter"></i> Lọc
-                    </button>
-                </div>
-            </form>
-        </div>
 
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <thead>
-                        <tr>
-                            <th class="ps-4">Sản phẩm</th>
-                            <th>Phân loại</th>
-                            <th>Giá bán</th>
-                            <th class="text-center" style="width: 280px;">Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ps-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="product-img me-3">
-                                        <i class="fa-solid fa-image"></i>
-                                    </div>
-                                    <div>
-                                        <div class="fw-bold text-dark">iPhone 15 Pro Max</div>
-                                        <span class="badge bg-light text-muted border fw-normal" style="font-size: 11px;">SKU: SKU001</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="text-secondary"><i class="fa-solid fa-tag me-1 small"></i> Điện thoại</span>
-                            </td>
-                            <td>
-                                <span class="fw-bold text-primary">25,000,000 đ</span>
-                            </td>
-                            <td class="text-center">
-                                <a href="/Product/Detail/1" class="btn btn-action btn-outline-info" title="Chi tiết">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="/Product/Edit/1" class="btn btn-action btn-outline-warning" title="Chỉnh sửa">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href="/Product/ListPhoto/1" class="btn btn-action btn-outline-secondary" title="Thư viện ảnh">
-                                    <i class="fa-solid fa-images"></i>
-                                </a>
-                                <a href="/Product/ListAttributes/1" class="btn btn-action btn-outline-primary" title="Thông số kỹ thuật">
-                                    <i class="fa-solid fa-rectangle-list"></i>
-                                </a>
-                                <a href="/Product/Delete/1" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')"
-                                   class="btn btn-action btn-outline-danger" title="Xóa">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col-md-4">
+                    <label class="form-label">Tên mặt hàng</label>
+                    <div class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Tên mặt hàng..." autofocus />
+                        <button class="btn btn-info d-flex align-items-center">
+                            <i class="bi bi-search me-1"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
 
-        <div class="card-footer bg-white py-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">Hiển thị 1 - 10 trên tổng số 50 sản phẩm</small>
-                <nav>
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item disabled"><a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<div class="mb-2 text-muted">
+    Danh sách này có <strong>20</strong> mặt hàng
+</div>
+
+<div class="card">
+    <div class="card-body p-1">
+        <table class="table table-bordered table-hover mb-0 align-middle">
+            <thead class="table-secondary">
+                <tr>
+                    <th style="width:80px;">Ảnh</th>
+                    <th>Mặt hàng</th>
+                    <th style="width:120px;">Đơn vị</th>
+                    <th style="width:120px;">Giá</th>
+                    <th class="text-center" style="width:140px;">Trạng thái</th>
+                    <th class="text-center" style="width:100px;">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 1; i <= 10; i++)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="~/images/products/demo.png"
+                                 class="img-thumbnail"
+                                 alt="Ảnh mặt hàng" />
+                        </td>
+                        <td>
+                            <strong>Nước suối Aquafina</strong><br />
+                            <small class="text-muted">
+                                Nước uống tinh khiết đóng chai 500ml
+                            </small>
+                        </td>
+                        <td>Chai</td>
+                        <td class="text-end">5,000</td>
+                        <td class="text-center">
+                            <span class="badge bg-success">Đang bán</span>
+                        </td>
+                        <td class="text-center text-nowrap">
+                            <a href="~/Product/Edit/123" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="~/Product/Delete/123" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <ul class="pagination justify-content-center mb-0">
+            <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+        </ul>
     </div>
 </div>

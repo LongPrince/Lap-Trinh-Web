@@ -121,9 +121,6 @@ namespace SV22T1020193.Admin.Controllers
         {
             return View();
         }
-        public IActionResul test(int id)
-        {
-            return View();
-        }
+       
     }
 }
