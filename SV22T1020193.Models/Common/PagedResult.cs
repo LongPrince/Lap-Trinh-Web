@@ -1,4 +1,4 @@
-﻿namespace SV22T102193.Models.Common
+﻿namespace LiteCommerce.Models.Common
 {
     /// <summary>
     /// Lớp dùng để biểu diễn kết quả truy vấn/tìm kiếm dữ liệu dưới dạng phân trang

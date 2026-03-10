@@ -1,4 +1,4 @@
-﻿namespace SV22T102193.Models.Sales
+﻿namespace LiteCommerce.Models.Sales
 {
     /// <summary>
     /// Định nghĩa các trạng thái của đơn hàng
