@@ -36,6 +36,14 @@
         /// <summary>
         /// Nhân viên đang làm việc hay không?
         /// </summary>
-        public bool? IsWorking { get; set; }        
+        public bool? IsWorking { get; set; }
+        /// <summary>
+        /// Mật khẩu đăng nhập
+        /// </summary>
+        public string Password { get; set; } = string.Empty;
+        /// <summary>
+        /// Chuỗi chức danh/quyền phân cách nhau bằng dấu phẩy
+        /// </summary>
+        public string RoleNames { get; set; } = string.Empty;
     }
 }

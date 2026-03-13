@@ -1,4 +1,6 @@
-﻿namespace LiteCommerce.Models.Common
+﻿using LiteCommerce.Models.Partner;
+
+namespace LiteCommerce.Models.Common
 {
     /// <summary>
     /// Lớp dùng để biểu diễn kết quả truy vấn/tìm kiếm dữ liệu dưới dạng phân trang
@@ -42,7 +44,9 @@
         /// <summary>
         /// Có trang sau không?
         /// </summary>
-        public bool HasNextPage => Page < PageCount;             
+        public bool HasNextPage => Page < PageCount;
+
+
         /// <summary>
         /// Lấy danh sách các trang được hiển thị trên thanh phân trang
         /// </summary>
