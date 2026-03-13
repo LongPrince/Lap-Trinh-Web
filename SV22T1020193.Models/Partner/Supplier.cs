@@ -1,4 +1,4 @@
-﻿namespace LiteCommerce.Models.Partner
+namespace SV22T1020193.Models.Partner
 {
     /// <summary>
     /// Nhà cung cấp

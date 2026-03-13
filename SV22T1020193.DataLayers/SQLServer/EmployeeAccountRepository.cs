@@ -1,9 +1,9 @@
 using Dapper;
-using LiteCommerce.DataLayers.Interfaces;
-using LiteCommerce.Models.Security;
+using SV22T1020193.DataLayers.Interfaces;
+using SV22T1020193.Models.Security;
 using Microsoft.Data.SqlClient;
 
-namespace LiteCommerce.DataLayers.SQLServer
+namespace SV22T1020193.DataLayers.SQLServer
 {
     /// <summary>
     /// Xử lý dữ liệu tài khoản nhân viên (Employee) trên SQL Server

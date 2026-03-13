@@ -1,11 +1,11 @@
-﻿using Dapper;
-using LiteCommerce.DataLayers.Interfaces;
-using LiteCommerce.Models.Common;
-using LiteCommerce.Models.Partner;
+using Dapper;
+using SV22T1020193.DataLayers.Interfaces;
+using SV22T1020193.Models.Common;
+using SV22T1020193.Models.Partner;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace LiteCommerce.DataLayers.SQLServer
+namespace SV22T1020193.DataLayers.SQLServer
 {
     /// <summary>
     /// Cài đặt các phép xử lý dữ liệu cho Nhà cung cấp trên SQL Server
@@ -14,6 +14,10 @@ namespace LiteCommerce.DataLayers.SQLServer
     public class SupplierRepository : IGenericRepository<Supplier>
     {
         private readonly string _connectionString;
+
+        public SupplierRepository()
+        {
+        }
 
         /// <summary>
         /// Khởi tạo Repository với chuỗi kết nối
@@ -45,7 +49,7 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// </summary>
         /// <param name="id">Mã của nhà cung cấp cần xóa</param>
         /// <returns>Trả về True nếu xóa thành công, nếu không thì False.</returns>
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> IsUsed(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {

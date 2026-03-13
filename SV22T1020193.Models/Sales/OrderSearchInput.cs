@@ -1,6 +1,6 @@
-﻿using LiteCommerce.Models.Common;
+using SV22T1020193.Models.Common;
 
-namespace LiteCommerce.Models.Sales
+namespace SV22T1020193.Models.Sales
 {
     /// <summary>
     /// Đầu vào tìm kiếm, phân trang đơn hàng

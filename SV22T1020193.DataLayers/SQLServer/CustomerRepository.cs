@@ -1,11 +1,11 @@
-﻿using Dapper;
-using LiteCommerce.DataLayers.Interfaces;
-using LiteCommerce.Models.Common;
-using LiteCommerce.Models.Partner;
+using Dapper;
+using SV22T1020193.DataLayers.Interfaces;
+using SV22T1020193.Models.Common;
+using SV22T1020193.Models.Partner;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace LiteCommerce.DataLayers.SQLServer
+namespace SV22T1020193.DataLayers.SQLServer
 {
     /// <summary>
     /// Cài đặt các phép xử lý dữ liệu cho Khách hàng trên SQL Server
@@ -41,7 +41,7 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// <summary>
         /// Xóa khách hàng theo ID
         /// </summary>
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> IsUsed(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {

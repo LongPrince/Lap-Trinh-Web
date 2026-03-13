@@ -1,11 +1,11 @@
 using Dapper;
-using LiteCommerce.DataLayers.Interfaces;
-using LiteCommerce.Models.Common;
-using LiteCommerce.Models.Sales;
+using SV22T1020193.DataLayers.Interfaces;
+using SV22T1020193.Models.Common;
+using SV22T1020193.Models.Sales;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace LiteCommerce.DataLayers.SQLServer
+namespace SV22T1020193.DataLayers.SQLServer
 {
     /// <summary>
     /// Cài đặt chức năng xử lý dữ liệu cho đơn hàng và các mặt hàng bán trong đơn hàng trên SQL Server

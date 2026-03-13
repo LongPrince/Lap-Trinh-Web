@@ -1,8 +1,8 @@
 using Dapper;
-using LiteCommerce.DataLayers.Interfaces;
+using SV22T1020193.DataLayers.Interfaces;
 using Microsoft.Data.SqlClient;
 
-namespace LiteCommerce.DataLayers.SQLServer
+namespace SV22T1020193.DataLayers.SQLServer
 {
     /// <summary>
     /// Cài đặt chức năng lấy danh sách Tỉnh/Thành phố

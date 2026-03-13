@@ -1,6 +1,6 @@
-﻿using LiteCommerce.Models.Security;
+using SV22T1020193.Models.Security;
 
-namespace LiteCommerce.DataLayers.Interfaces
+namespace SV22T1020193.DataLayers.Interfaces
 {
     /// <summary>
     /// Định nghĩa các phép xử lý dữ liệu liên quan đến tài khoản
