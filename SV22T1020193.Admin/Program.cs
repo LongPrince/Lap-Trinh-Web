@@ -16,10 +16,10 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(option =>
                 {
-                    option.Cookie.Name = "SV22T1020193.Admin"; 
+                    option.Cookie.Name = "LiteCommerce.Admin";
                     option.LoginPath = "/Account/Login";
                     option.AccessDeniedPath = "/Account/AccessDenied";
-                    option.ExpireTimeSpan = TimeSpan.FromDays(7); 
+                    option.ExpireTimeSpan = TimeSpan.FromDays(7);
                     option.SlidingExpiration = true;
                     option.Cookie.HttpOnly = true;
                     option.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
@@ -28,7 +28,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Configure Session
 builder.Services.AddSession(option =>
 {
-    option.IdleTimeout = TimeSpan.FromHours(2); 
+    option.IdleTimeout = TimeSpan.FromHours(2);
     option.Cookie.HttpOnly = true;
     option.Cookie.IsEssential = true;
 });
@@ -65,10 +65,10 @@ ApplicationContext.Configure
 );
 
 //Get Connection String from appsettings.json
-string connectionString = builder.Configuration.GetConnectionString("SV22T1020193DB")
-    ?? throw new InvalidOperationException("ConnectionString 'SV22T1020193DB' not found.");
+string connectionString = builder.Configuration.GetConnectionString("LiteCommerceDB")
+    ?? throw new InvalidOperationException("ConnectionString 'LiteCommerceDB' not found.");
 
 // Initialize Business Layer Configuration
-//SV22T1020193.BusinessLayers.Configuration.Initialize(connectionString);
+SV22T1020193.BusinessLayers.Configuration.Initialize(connectionString);
 
 app.Run();

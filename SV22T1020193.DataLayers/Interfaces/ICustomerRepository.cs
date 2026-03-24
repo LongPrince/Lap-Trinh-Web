@@ -1,4 +1,4 @@
-using SV22T1020193.Models.Partner;
+﻿using SV22T1020193.Models.Partner;
 
 namespace SV22T1020193.DataLayers.Interfaces
 {

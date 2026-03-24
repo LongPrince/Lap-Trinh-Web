@@ -1,34 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SV22T1020193.BusinessLayers
+﻿namespace SV22T1020193.BusinessLayers
 {
     /// <summary>
-    /// Lớp lưu giữ các thông tin cấu hình sử dụng trong Business Layer
+    /// Lớp lưu trữ các thông tin cấu hình sử dụng trong Business Layer
     /// </summary>
-    public static  class Configuration
+    public class Configuration
     {
-        private static string _connectionString = " ";
+        private static string _connecttionString = "";
         /// <summary>
-        /// Hàm có chức năng khởi tạo cấu hình cho Business Layer
-        /// Hàm này phải được gọi trước khi chạy ứng dụng 
+        /// Hàm này có chức năng khởi tạo cấu hình cho Business Layer
+        /// (Phải được gọi hàm này khi chạy ứng dụng)
         /// </summary>
-        /// <param name="connectionString"></param>
-        public static void Intitalize(string connectionString)
-        { 
-            _connectionString = connectionString; 
-        
+        /// <param name="connecttionString"></param>
+        public static void Initialize(string connecttionString)
+        {
+            _connecttionString = connecttionString;
         }
-       
-        ///<summary>
-        ///Lấy chuỗi tham số kết nối đến csdl
-        ///(Configuration.ConnectionString 
+        /// <summary>
+        /// Lấy chuỗi tham số kết nối đến cơ sở dữ liệu
         /// </summary>
-             
-        public static string ConnectionString => _connectionString;
-            
+        public static string ConnectionString => _connecttionString;
     }
 }

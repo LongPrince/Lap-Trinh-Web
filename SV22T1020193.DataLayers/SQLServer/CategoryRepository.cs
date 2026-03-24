@@ -1,4 +1,4 @@
-using Dapper;
+﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using SV22T1020193.DataLayers.Interfaces;
 using SV22T1020193.Models.Catalog;
@@ -40,7 +40,7 @@ namespace SV22T1020193.Datalayers.SQLServer
         /// <summary>
         /// Xóa loại hàng theo mã ID
         /// </summary>
-        public async Task<bool> IsUsed(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -65,7 +65,7 @@ namespace SV22T1020193.Datalayers.SQLServer
         /// <summary>
         /// Kiểm tra xem loại hàng đã có mặt hàng (Products) nào thuộc về nó chưa
         /// </summary>
-        public async Task<bool> IsUsed(int id)
+        public async Task<bool> IsUsedAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {

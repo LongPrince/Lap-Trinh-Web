@@ -1,4 +1,4 @@
-using SV22T1020193.Models.Catalog;
+﻿using SV22T1020193.Models.Catalog;
 using SV22T1020193.Models.Common;
 
 namespace SV22T1020193.DataLayers.Interfaces
@@ -6,7 +6,7 @@ namespace SV22T1020193.DataLayers.Interfaces
     /// <summary>
     /// Định nghĩa các phép xử lý dữ liệu cho mặt hàng
     /// </summary>
-    public interface IProductRepository 
+    public interface IProductRepository
     {
         /// <summary>
         /// Tìm kiếm và lấy danh sách mặt hàng dưới dạng phân trang

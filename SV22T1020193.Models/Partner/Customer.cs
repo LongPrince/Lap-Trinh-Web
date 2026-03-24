@@ -1,4 +1,4 @@
-namespace SV22T1020193.Models.Partner
+﻿namespace SV22T1020193.Models.Partner
 {
     /// <summary>
     /// Khách hàng
@@ -37,9 +37,5 @@ namespace SV22T1020193.Models.Partner
         /// Khách hàng hiện có bị khóa hay không?
         /// </summary>
         public bool? IsLocked { get; set; }
-        /// <summary>
-        /// Mật khẩu đăng nhập
-        /// </summary>
-        public string Password { get; set; } = string.Empty;
     }
 }

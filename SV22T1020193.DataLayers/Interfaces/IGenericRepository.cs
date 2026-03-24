@@ -1,4 +1,4 @@
-using SV22T1020193.Models.Common;
+﻿using SV22T1020193.Models.Common;
 
 namespace SV22T1020193.DataLayers.Interfaces
 {
@@ -38,14 +38,12 @@ namespace SV22T1020193.DataLayers.Interfaces
         /// </summary>
         /// <param name="id">Mã của bản ghi cần xóa</param>
         /// <returns></returns>
-        Task<bool> IsUsed(int id);
+        Task<bool> DeleteAsync(int id);
         /// <summary>
         /// Kiểm tra xem một bản ghi có mã là id có dữ liệu liên quan hay không?
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> IsUsed(int id);
-        Task<bool> IsUsedAsync(int supplierID);
-        Task<bool> DeleteAsync(int supplierID);
+        Task<bool> IsUsedAsync(int id);
     }
 }

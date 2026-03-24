@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace SV22T1020193.Admin
 {
@@ -49,7 +49,7 @@ namespace SV22T1020193.Admin
         /// <summary>
         /// Đường dẫn vật lý đến thư mục gốc lưu ứng dụng Web
         /// </summary>
-        public static string ApplicationRootPath => _webHostEnvironment?.ContentRootPath ?? string.Empty;        
+        public static string ApplicationRootPath => _webHostEnvironment?.ContentRootPath ?? string.Empty;
 
         /// <summary>
         /// Ghi dữ liệu vào session
@@ -115,6 +115,5 @@ namespace SV22T1020193.Admin
             _configuration?.GetSection(name).Bind(value);
             return value;
         }
-        
     }
 }

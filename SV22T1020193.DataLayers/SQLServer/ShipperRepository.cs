@@ -1,4 +1,4 @@
-using Dapper;
+﻿using Dapper;
 using SV22T1020193.DataLayers.Interfaces;
 using SV22T1020193.Models.Common;
 using SV22T1020193.Models.Partner;
@@ -45,7 +45,7 @@ namespace SV22T1020193.DataLayers.SQLServer
         /// </summary>
         /// <param name="id">Mã của người giao hàng cần xóa</param>
         /// <returns>Trả về True nếu xóa thành công, nếu không thì False.</returns>
-        public async Task<bool> IsUsed(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -74,7 +74,7 @@ namespace SV22T1020193.DataLayers.SQLServer
         /// </summary>
         /// <param name="id">Mã của người giao hàng cần kiểm tra</param>
         /// <returns>Trả về True nếu có dữ liệu liên quan, ngược lại là False.</returns>
-        public async Task<bool> IsUsed(int id)
+        public async Task<bool> IsUsedAsync(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
