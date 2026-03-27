@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using SV22T1020193.BusinessLayers;
+using SV22T1020193.Models.Catalog;
+using System.Buffers;
 
 namespace SV22T1020193.Admin.Controllers
 {
-    public class Order : Controller
+
+    public class OrderController : Controller
     {
+        private const string PRODUCT_SEARCH = "SearchProductToSale";
         /// <summary>
         /// Nhập đầu vào tìm kiếm và hiển thị kết quả tìm kiếm đơn hàng
         /// </summary>
         /// <returns></returns>
+
         public IActionResult Index()
         {
             return View();
@@ -18,12 +25,25 @@ namespace SV22T1020193.Admin.Controllers
         /// <returns></returns>
         public IActionResult Create()
         {
-            return View();
+            var input = ApplicationContext.GetSessionData<ProductSearchInput>(PRODUCT_SEARCH);
+            if (input == null) input = new ProductSearchInput()
+            {
+                Page = 1,
+                PageSize = 10,
+                SearchValue = ""
+            };
+            return View(input);
         }
-       /// <summary>
-       /// Tìm kiếm đơn hàng
-       /// </summary>
-       /// <returns></returns>
+        public async Task<IActionResult> SearchProduct(ProductSearchInput input)
+        {
+            var result = await CatalogDataService.ListProductsAsync(input);
+            ApplicationContext.SetSessionData(PRODUCT_SEARCH, input);
+            return View(result);
+        }
+        /// <summary>
+        /// Tìm kiếm đơn hàng
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Search()
         {
             return View();
@@ -45,11 +65,11 @@ namespace SV22T1020193.Admin.Controllers
         /// <param name="id">0:Giỏ hàng,Khác 0: mã đơn hàng cần xử lý</param>
         /// <param name="productId">Mã mặt hàng cần cập nhật</param>
         /// <returns></returns>
-        public IActionResult EditCartItem(int id = 0,int productId = 0)
+        public IActionResult EditCartItem(int id = 0, int productId = 0)
         {
-            if(id == 0) 
-            { 
-            //Xử lý cho Giỏ Hàng
+            if (id == 0)
+            {
+                //Xử lý cho Giỏ Hàng
             }
             else
             {
@@ -57,7 +77,7 @@ namespace SV22T1020193.Admin.Controllers
             }
             return View();
         }
-        public IActionResult DeleteCartItem(int id = 0,int productId = 0)
+        public IActionResult DeleteCartItem(int id = 0, int productId = 0)
         {
             return View();
         }
